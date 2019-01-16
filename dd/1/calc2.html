@@ -1,0 +1,143 @@
+<html>
+
+<head>
+   <title>LeeDongYun</title>
+    <style>
+        Form{
+        }
+        Input[type=Button]{
+            width:39px;
+        }
+        Input[name=Result]{
+            width: 128px;
+        }
+        Input[name=ClrHistory]{
+            width: 175px;
+        }
+        .History{
+            width: 173px;
+            height: 200px;
+            overflow: scroll;
+            
+        }
+        p{
+            margin: 1px;
+            font-size:14px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        var Result = $("#Result");
+        function Input(chNum) {
+            console.log(Result);
+            var chLastInput = Result.value.substr(Result.value.length - 1);
+            console.log(chLastInput);
+            
+            if(Result.value == 0){
+                Result.value = "";
+            }
+            Result.value += chNum;
+            
+            if(Result.value == 00){
+                Result.value = 0;
+            }    
+        }
+        
+        function Func(chOpt) {
+            var chLastInput = Result.value.substr(Result.value.length - 1);
+            console.log(chLastInput);
+            
+            if(!isNaN(chLastInput)){
+                Result.value += chOpt;
+            }
+        }
+
+        function Calc() {
+            var chLastInput = Result.value.substr(Result.value.length - 1);
+            if(!isNaN(chLastInput)){
+                $(".History").append("<p>" + Result.value + " = ");
+            Result.value = eval(Result.value);
+            var chVal = Result.value;
+            $("p:last").append(Result.value);
+            if(chVal == Infinity){
+                Result.value = 0;
+                $("p:last").remove();
+                $(".History").append("<p>0으로 나눌 수 없습니다.</p>");
+                console.log(chVal);
+            }else if(chVal == "NaN"){
+                Result.value = 0;
+                $("p:last").remove();
+                $(".History").append("<p>에러.</p>");
+            }
+            }
+            
+        }
+
+        function Clr_rst() {
+            Result.value = "0";
+        }
+        
+        function Clr_History() {
+            $(".History").empty();
+        }
+
+    </script>
+</head>
+
+<body>
+    <Form name="Form">
+        <Table border="solid">
+            <tr>
+                <td>
+                    <input type="text" id="Result" value="0" disabled="disabled">
+                    <input type="Button" value="C" OnClick="Clr_rst()">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="Button" value="7" OnClick="Input('7')">
+                    <input type="Button" value="8" OnClick="Input('8')">
+                    <input type="Button" value="9" OnClick="Input('9')">
+                    <input type="Button" value="+" OnClick="Func('+')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="Button" value="4" OnClick="Input('4')">
+                    <input type="Button" value="5" OnClick="Input('5')">
+                    <input type="Button" value="6" OnClick="Input('6')">
+                    <input type="Button" value="-" OnClick="Func('-')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="Button" value="1" OnClick="Input('1')">
+                    <input type="Button" value="2" OnClick="Input('2')">
+                    <input type="Button" value="3" OnClick="Input('3')">
+                    <input type="Button" value="*" OnClick="Func('*')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="Button" value="0" OnClick="Input('0')">
+                    <input type="Button" value="." OnClick="Input('.')">
+                    <input type="Button" value="=" OnClick="Calc()">
+                    <input type="Button" value="/" OnClick="Func('/')">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="History">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <input name="ClrHistory" type="Button" value="기록 삭제" OnClick="Clr_History()">
+                </td>
+            </tr>
+        </Table>
+    </Form>
+</body>
+
+</html>

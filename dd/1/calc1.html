@@ -1,0 +1,196 @@
+<html>
+
+<head>
+    <title>LeeDongYun</title>
+    <style>
+        button {
+            width: 60px;
+            height: 40px;
+        }
+        
+        p{
+            margin: 0;
+        }
+
+        .history {
+            height: 100px;
+            overflow: scroll;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <table border="solid">
+        <tr>
+            <td colspan="4">
+                <div class="history">
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="result">
+
+                </div>
+            </td>
+            <td>
+                <button class="clr">C</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="num">7</button>
+            </td>
+            <td>
+                <button class="num">8</button>
+            </td>
+            <td>
+                <button class="num">9</button>
+            </td>
+            <td>
+                <button class="div">/</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="num">4</button>
+            </td>
+            <td>
+                <button class="num">5</button>
+            </td>
+            <td>
+                <button class="num">6</button>
+            </td>
+            <td>
+                <button class="mul">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="num">1</button>
+            </td>
+            <td>
+                <button class="num">2</button>
+            </td>
+            <td>
+                <button class="num">3</button>
+            </td>
+            <td>
+                <button class="minus">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="num" style="width: 100%">0</button>
+            </td>
+            <td>
+                <button class="calc">=</button>
+            </td>
+            <td>
+                <button class="plus">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <button class="allClr" style="width:100%">Clear</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function() {
+            var tempValue = "";
+            var viewValue = "";
+            var result = "";
+            var value = new Array();
+
+            $(".num").click(function() {
+                viewValue = "";
+                viewValue += $(this).html();
+                $(".result").html(viewValue);
+            });
+
+            $(".clr").click(function() {
+                viewValue = "";
+                $(".result").empty();
+            });
+
+            $(".allClr").click(function() {
+                viewValue = "";
+                tempValue = "";
+                $(".result").empty();
+                $(".history").empty();
+            });
+
+            $(".plus").click(function() {
+                tempValue = viewValue;
+                viewValue = "";
+                opt = 1;
+            });
+
+            $(".minus").click(function() {
+                tempValue = viewValue;
+                viewValue = "";
+                opt = 2;
+            });
+
+            $(".mul").click(function() {
+                tempValue = viewValue;
+                viewValue = "";
+                opt = 3;
+            });
+
+            $(".div").click(function() {
+                tempValue = viewValue;
+                viewValue = "";
+                opt = 4;
+            });
+
+
+            $(".calc").click(function() {
+                if (opt == 1) {
+                    result = parseInt(tempValue) + parseInt(viewValue);
+                    if (!isNaN(result)) {
+                        var rst = tempValue + "+" + viewValue + "=" + result + "<br>";
+                        $(".history").append("<p>" + rst + "</p>");
+                    }
+                } else if (opt == 2) {
+                    result = parseInt(tempValue) - parseInt(viewValue);
+                    if (!isNaN(result)) {
+                        var rst = tempValue + "-" + viewValue + "=" + result + "<br>";
+                        $(".history").append("<p>" + rst + "</p>");
+                    }
+                } else if (opt == 3) {
+                    result = parseInt(tempValue) * parseInt(viewValue);
+                    if (!isNaN(result)) {
+                        var rst = tempValue + "*" + viewValue + "=" + result + "<br>";
+                        $(".history").append("<p>" + rst + "</p>");
+                    }
+                } else {
+                    result = parseInt(tempValue) / parseInt(viewValue);
+                    if (!isNaN(result)) {
+                        if (result !== Infinity) {
+                            var rst = tempValue + "/" + viewValue + "=" + result + "<br>";
+                            $(".history").append("<p>" + rst + "</p>");
+                        }
+                    }
+                }
+
+                if (result == Infinity) {
+                    $(".result").html("0으로 나눌 수 없습니다.");
+                } else {
+                    $(".result").html(result);
+                }
+                viewValue = result;
+
+                if (isNaN(result)) {
+                    $(".result").html("에러");
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

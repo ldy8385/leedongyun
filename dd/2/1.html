@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>숫자야구 게임</title>
+    <style>
+        #wrap {
+            background-color: #999;
+            padding: 20px;
+        }
+        .log{
+            background-color: white;
+            width: 300px;
+            height: 210px;
+            float: left;
+            overflow: scroll;
+        }
+        .control{
+            margin-left: 320px;
+        }
+        .num{
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            font-size: 25px;
+        }
+        .num:hover{
+            background-color: #ddd;
+        }
+        .num:visited{
+            background-color: black;
+        }
+        .value{
+            width: 36px;
+            height: 36px;
+            text-align: center;
+            font-size: 25px;
+        }
+        .btn{
+            width:63px;
+            background-color: white;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="log">
+
+        </div>
+        <div class="control">
+            <table>
+                <tr>
+                    <td>
+                        <button id="num7" class="num" value="7">7</button>
+                        <button id="num8" class="num" value="8">8</button>
+                        <button id="num9" class="num" value="9">9</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="num4" class="num" value="4">4</button>
+                        <button id="num5" class="num" value="5">5</button>
+                        <button id="num6" class="num" value="6">6</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="num1" class="num" value="1">1</button>
+                        <button id="num2" class="num" value="2">2</button>
+                        <button id="num3" class="num" value="3">3</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="val1" class="value" type="text" disabled="disabled">
+                        <input id="val2" class="value" type="text" disabled="disabled">
+                        <input id="val3" class="value" type="text" disabled="disabled">
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                        <button class="btn" id="del">삭제</button>
+                        <button class="btn" id="confirm">확인</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var number = [];
+        var numberCount = $(".value").length;
+        for (var i = 0; i < numberCount; i++) {
+            var select = Math.floor(Math.random() * list.length);
+            number[i] = list.splice(select, 1)[0];
+        }
+        console.log("뽑힌 수 : " + number);
+        var count = 1;
+        var strike = 0;
+        var ball = 0;
+
+        var temp1 = "";
+        var temp2 = "";
+        var temp3 = "";
+        var input = "";
+
+        $(".num").click(function () {
+            var value = "";
+            value += $(this).html();
+            console.log(value);
+            if ($("#val1").val().length < 1) {
+                $("#val1").val(value);
+            } else if ($("#val2").val().length < 1) {
+                $("#val2").val(value);
+            } else {
+                $("#val3").val(value);
+            }
+
+            temp1 = $("#val1").val();
+            temp2 = $("#val2").val();
+            temp3 = $("#val3").val();
+            input = temp1 + temp2 + temp3;
+
+            for (var l = 1; l < 10; l++) {
+                if (input.includes(l)) {
+                    $("#num" + l).attr("disabled", true);
+                }
+            }
+
+        });
+
+        $("#del").click(function () {
+            $(".value").val("");
+            $(".num").attr("disabled", false);
+        });
+
+        $("#confirm").click(function () {
+            if (count < 10) {
+                $(".log").append("<p>" + count + "회</p>");
+            } else {
+                $(".log").append("<p>OUT!!!</p>");
+            }
+
+            temp1 = $("#val1").val();
+            temp2 = $("#val2").val();
+            temp3 = $("#val3").val();
+            input = temp1 + temp2 + temp3;
+
+            var inputArray = input.split("");
+            strike = 0;
+            ball = 0;
+            count++;
+            for (var j = 0; j < 3; j++) {
+                for (var k = 0; k < 3; k++) {
+                    if (number[j] == inputArray[k]) {
+                        if (j === k) {
+                            strike++;
+                        } else {
+                            ball++;
+                        }
+                        break;
+                    }
+                }
+            }
+            if (strike === 3) {
+                $(".log").append("<p>" + inputArray.join("") + " : 3 STRIKE!!! 게임이 끝났습니다.</p>");
+                $('.log').scrollTop($('.log').prop('scrollHeight'));
+                $(".btn").attr("disabled", true);
+                if (count > 10) {
+                    $("p:last").remove();
+                    $(".log").append("<p>" + inputArray.join("") + " : 3 STRIKE지만 시도 횟수 초과입니다. 다시 도전해 보세요.</p>");
+                    $('.log').scrollTop($('.log').prop('scrollHeight'));
+                    $(".btn").attr("disabled", true);
+                }
+            } else if (count > 10) {
+                $(".log").append("<p>시도 횟수 초과. 게임이 끝났습니다.</p>");
+                $('.log').scrollTop($('.log').prop('scrollHeight'));
+                $(".btn").attr("disabled", true);
+            } else {
+                $(".log").append("<p>" + inputArray.join("") + " : " + strike + " STRIKE " + ball + " BALL" +
+                    "</p>");
+                $('.log').scrollTop($('.log').prop('scrollHeight'));
+                if (count == 9) {
+                    $(".log").append("<p>기회가 1번 남았습니다.</p>");
+                    $('.log').scrollTop($('.log').prop('scrollHeight'));
+                }
+            }
+            $(".value").val("");
+            $(".num").attr("disabled", false);
+        });
+    </script>
+</body>
+
+</html>
