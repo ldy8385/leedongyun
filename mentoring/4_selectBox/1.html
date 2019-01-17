@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>LeeDongYun</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <style>
+        .slt{
+            width:173px;
+            float: left;
+        }
+        #slt2{
+            margin-left: 47px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="section">
+            <input type="text" class="txt" id="txt1">
+            <button class="btn" id="btn1" value="1" onclick="add(1)">Btn</button>
+            <input type="text" class="txt" id="txt2">
+            <button class="btn" id="btn2" value="2" onclick="add(2)">Btn</button>
+        </div>
+        <div class="select">
+            <select class="slt" id="slt1">
+                <option value="1">1</option>
+                <option value="1">2</option>
+                <option value="1">3</option>
+                <option value="1">4</option>
+                <option value="1">5</option>
+                <option value="1">6</option>
+                <option value="1">7</option>
+                <option value="1">8</option>
+                <option value="1">9</option>
+            </select>
+            <select class="slt" id="slt2">
+                <option value="1">1</option>
+                <option value="1">2</option>
+                <option value="1">3</option>
+                <option value="1">4</option>
+                <option value="1">5</option>
+                <option value="1">6</option>
+                <option value="1">7</option>
+                <option value="1">8</option>
+                <option value="1">9</option>
+            </select>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function add(tag) {
+        // $("#slt" + tag).append($("#txt" + tag).val());
+        $("#slt" + tag).append($("<option>",{value: $('#txt' + ta
