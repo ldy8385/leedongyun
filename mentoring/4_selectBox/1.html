@@ -51,4 +51,9 @@
 <script type="text/javascript">
     function add(tag) {
         // $("#slt" + tag).append($("#txt" + tag).val());
-        $("#slt" + tag).append($("<option>",{value: $('#txt' + ta
+        $("#slt" + tag).append($("<option>",{value: $('#txt' + tag).val(), text: $('#txt' + tag).val()}));
+    }
+
+</script>
+
+</html>
