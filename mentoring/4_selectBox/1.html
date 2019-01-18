@@ -4,13 +4,30 @@
     <title>LeeDongYun</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <style>
+        .txt{
+            width:50px;
+            height: 30px;
+        }
+        .btn{
+            width:45px;
+            height: 30px;
+            text-align: center;
+        }
         .slt{
-            width:173px;
-            float: left;
+            width:50px;
+            height: 30px;
             margin-top: 20px;
         }
-        #slt1{
-            margin-left: 47px;
+        .logView{
+            width:207px;
+            height: 200px;
+            background-color: black;
+            margin-top: 20px;
+            overflow-y: scroll;
+        }
+        .logView p{
+            color: white;
+            margin: 2px;
         }
     </style>
 </head>
@@ -19,9 +36,9 @@
     <div id="wrap">
         <div class="section">
             <input type="text" class="txt" id="txt0">
-            <button class="btn" id="btn0" value="0" onclick="add(0)">Btn</button>
+            <button class="btn" id="btn0" value="0" onclick="add(0)">입력</button>
             <input type="text" class="txt" id="txt1">
-            <button class="btn" id="btn1" value="1" onclick="add(1)">Btn</button>
+            <button class="btn" id="btn1" value="1" onclick="add(1)">입력</button>
         </div>
         <div class="select">
             <select class="slt" id="slt0">
@@ -35,6 +52,7 @@
                 <option value="8">8</option>
                 <option value="9">9</option>
             </select>
+            <button class="btn" id="mulBtn" onclick="mul()">X</button>
             <select class="slt" id="slt1">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -47,28 +65,36 @@
                 <option value="9">9</option>
             </select>
         </div>
+        <div class="logView"></div>
     </div>
 </body>
 <script type="text/javascript">
+var inputValue = "";
     function insert(tag) {
-        // 함수의 인자값을 이용하는 방법
-        // $("#slt" + tag).append($("<option>",{value : $("#txt" + tag).val(), text : $("#txt" + tag).val()}));
+        var currentInputValue = parseInt($('#txt' + tag).val());
+        if (!isNaN(currentInputValue)) {
+            // 함수의 인자값을 이용하는 방법
+            // $('#slt' + tag).append($('<option>', {
+            //     value: $('#txt' + tag).val(),
+            //     text: $('#txt' + tag).val()
+            // }));
 
-        // .eq 메소드를 사용하는 방법
-        $('.slt').eq(tag).append($('<option>', { value: $('.txt').eq(tag).val(), text: $('.txt').eq(tag).val() }));
-
-        // 
-
+            // .eq 메소드를 사용하는 방법
+            $('.slt').eq(tag).append($('<option>', {
+                value: $('.txt').eq(tag).val(),
+                text: $('.txt').eq(tag).val()
+            }));
+        }
+        inputValue = $('#txt' + tag).val();
+        $('#txt' + tag).val('');
     }
     function sortSelect(tag) {
-        var $sel = $('#slt' + tag);
-        var $obj = $('select[id$=slt0] option');
-        // arr.push(sel.find('option'));
+        var $currentSelect = $('#slt' + tag);
+        var $currentOption = $currentSelect.find('option');
+        var sortValue = [];
+        var uniqueValue = [];
 
-
-
-        var sortValue = new Array;
-        $sel.find('option').each(function () {
+        $currentOption.each(function () {
             sortValue.push(this.value);
         });
 
@@ -76,25 +102,19 @@
             return a - b;
         });
 
-        console.log(sortValue);
-        $sel.find('option').remove();
-        // $sel.html(sortValue.val);
+        $currentOption.remove();
 
-        var uniqueValue = [];
-        $.each(sortValue, function (i, el) {
-            if($.inArray(el, uniqueValue) === -1) uniqueValue.push(el);
-        });
-
-        uniqueValue.filter(n => n);
+        uniqueValue = $.unique(sortValue);
 
         $.each(uniqueValue, function (i) {
-            $sel.append($('<option>', {
+            $currentSelect.append($('<option>', {
                 value: uniqueValue[i],
                 text: uniqueValue[i]
             }));
         });
-
         sortValue = [];
+
+        $('option[value=' + inputValue + ']').attr('selected','selected');
     }
 
     function add(tag) {
@@ -102,6 +122,18 @@
         sortSelect(tag);
     }
 
+    function mul() {
+        var numValue1 = "";
+        var numValue2 = "";
+        var mulResult = "";
+
+        numValue1 = $('#slt0').val();
+        numValue2 = $('#slt1').val();
+        mulResult = numValue1 * numValue2;
+
+        $('.logView').append('<p>' + numValue1 + ' X ' + numValue2 + ' = ' + mulResult + '</p>');
+        $('.logView').scrollTop($('.logView').prop('scrollHeight'));
+    }
 </script>
 
 </html>
