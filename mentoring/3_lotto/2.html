@@ -5,9 +5,10 @@
     <style>
         p{
             margin: 0;
-            font-size:12px;
+            font-size:15px;
             text-align: center;
         }
+
         .logo{
             border: 1px solid;
             padding: 0px;
@@ -38,9 +39,15 @@
             height: 30px;
             border: 1px solid;
         }
+        .prizeNum{
+            width: 236px;
+            height: 25px;
+            border: 1px solid;
+            text-align: center;
+        }
         .prizeNumView{
             width: 236px;
-            height: 80px;
+            height: 53px;
             border: 1px solid;
         }
         .prizeNumView p{
@@ -51,12 +58,19 @@
             padding: 5px;
             width: 15px;
             height: 15px;
+            -webkit-text-stroke: 1px #fff;
+            color:black;
         }
         .sectionRight{
             border: 1px solid;
             height: 380px;
             width: 200px;
             display: inline-block;
+        }
+        .hitResult{
+            border: 1px solid;
+            height: 25px;
+            text-align: center;
         }
         .hitResultView{
             border: 1px solid;
@@ -70,10 +84,17 @@
             padding: 5px;
             width: 15px;
             height: 15px;
+            -webkit-text-stroke: 1px #fff;
+            color:black;
+        }
+        .prize{
+            border: 1px solid;
+            height: 25px;
+            text-align: center;
         }
         .prizeView{
             border: 1px solid;
-            height: 337px;
+            height: 283px;
         }
         .prizeView p{
             margin: 0px;
@@ -93,24 +114,32 @@
         </div>
         <div class="sectionLeft">
             <div class="numberSelectSection">
-                <table>
-
-                </table>
+                <table></table>
             </div>
             <button id="submitBtn" onClick="submit()">제출 / 초기화</button>
             <div class="submitNumView">
                 <p class="submitNumText"></p>
             </div>
+            <div class="prizeNum"></div>
             <div class="prizeNumView"></div>
         </div>
         <div class="sectionRight">
+            <div class="hitResult">적중번호</div>
             <div class="hitResultView"></div>
+            <div class="prize">결과</div>
             <div class="prizeView"></div>
         </div>
     </div>
     <script type="text/javascript">
         var submitNumArray = [];
         var myLotto = [];
+        var colorCode = "";
+        var th = Math.floor((Math.random() * (999 - 1 + 1)) + 1);
+
+
+        $(document).ready(function () {
+            creatForm()
+        });
 
         function creatForm() {
             var num = 1;
@@ -122,8 +151,9 @@
                 }
                 $('table').append('</tr>');
             }
+            $('.logo').append('<p>' + th + '회</p>');
+            $('.prizeNum').append('<p>' + th + '회 당첨번호</p>');
         }
-        creatForm();
 
         function numberSubmit() {
             $("input[name=chkNum]:checked").each(function () {
@@ -161,7 +191,8 @@
                 }
                 console.log("생성된 로또 번호 : " + myLotto);
                 for (j = 0; j < 6; j++) {
-                    $(".prizeNumView").append("<p>" + myLotto[j] + "</p>");
+                    colorCode = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+                    $(".prizeNumView").append("<p style='background-color:" + colorCode + "'>" + myLotto[j] + "</p>");
                 }
             }
         }
@@ -175,8 +206,9 @@
                 for (k = 0; k < 6; k++) {
                     submitNumValue = myLotto.indexOf(submitNumArray[k]);
                     if (submitNumValue != -1) {
-                        console.log("적중한 수 : " + myLotto[submitNumValue]);
-                        $(".hitResultView").append("<p>" + myLotto[submitNumValue] + "</p>");
+                        colorCode = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+                        $(".hitResultView").append("<p style='background-color:" + colorCode + "'>" + myLotto[
+                            submitNumValue] + "</p>");
                     }
                 }
                 switch ($(".hitResultView p").length) {
