@@ -3,14 +3,20 @@
 <head>
     <title>LOTTO</title>
     <style>
+        body{
+            background-color: black;
+        }
         p{
             margin: 0;
             font-size:15px;
             text-align: center;
+            color: #ffaa9b;
         }
-
+        button{
+            background-color: #ffaa9b;
+        }
         .logo{
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             padding: 0px;
             width: 438px;
         }
@@ -23,9 +29,11 @@
         }
         .sectionLeft{
             float: left;
+            background-color: black;
         }
         table, th, td{
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
+            color: #ffaa9b;
         }
         tr, td{
             width: 20px;
@@ -37,22 +45,22 @@
         .submitNumView{
             width: 236px;
             height: 30px;
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
         }
         .prizeNum{
             width: 236px;
             height: 25px;
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             text-align: center;
         }
         .prizeNumView{
             width: 236px;
             height: 53px;
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
         }
         .prizeNumView p{
             float: left;
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             border-radius: 50%;
             margin: 6px;
             padding: 5px;
@@ -62,23 +70,25 @@
             color:black;
         }
         .sectionRight{
-            border: 1px solid;
+            background-color: black;
+            color: #ffaa9b;
+            border: 1px solid #ffaa9b;
             height: 380px;
             width: 200px;
             display: inline-block;
         }
         .hitResult{
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             height: 25px;
             text-align: center;
         }
         .hitResultView{
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             height: 40px;
         }
         .hitResultView p{
             float: left;
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             border-radius: 50%;
             margin: 3px;
             padding: 5px;
@@ -88,12 +98,12 @@
             color:black;
         }
         .prize{
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             height: 25px;
             text-align: center;
         }
         .prizeView{
-            border: 1px solid;
+            border: 1px solid #ffaa9b;
             height: 283px;
         }
         .prizeView p{
@@ -103,6 +113,51 @@
             position: relative;
             transform: translateY(100%);
         }
+        /*-- Sign Styles --*/
+.logo {
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logo__word {
+  font-size: 5.6rem;
+  text-align: center;
+  line-height: 1;
+  color: #ffaa9b;
+  -webkit-animation: neon .08s ease-in-out infinite alternate;
+          animation: neon .08s ease-in-out infinite alternate;
+}
+.logo p {
+
+  text-align: center;
+  line-height: 1;
+  color: #ffaa9b;
+  -webkit-animation: neon .08s ease-in-out infinite alternate;
+          animation: neon .08s ease-in-out infinite alternate;
+}
+
+/*-- Animation Keyframes --*/
+@-webkit-keyframes neon {
+  from {
+    text-shadow: 0 0 6px rgba(255, 183, 183, 0.92), 0 0 30px rgba(255, 183, 183, 0.34), 0 0 12px rgba(255, 53, 53, 0.52), 0 0 21px rgba(255, 53, 53, 0.92), 0 0 34px rgba(255, 532, 53, 0.78), 0 0 54px rgba(255, 53, 53, 0.92);
+  }
+  to {
+    text-shadow: 0 0 6px rgba(255, 183, 183, 0.98), 0 0 30px rgba(255, 183, 183, 0.42), 0 0 12px rgba(255, 53, 53, 0.58), 0 0 22px rgba(255, 53, 53, 0.84), 0 0 38px rgba(255, 532, 53, 0.88), 0 0 60px #ff3535;
+  }
+}
+@keyframes neon {
+  from {
+    text-shadow: 0 0 6px rgba(255, 183, 183, 0.92), 0 0 30px rgba(255, 183, 183, 0.34), 0 0 12px rgba(255, 53, 53, 0.52), 0 0 21px rgba(255, 53, 53, 0.92), 0 0 34px rgba(255, 532, 53, 0.78), 0 0 54px rgba(255, 53, 53, 0.92);
+  }
+  to {
+    text-shadow: 0 0 6px rgba(255, 183, 183, 0.98), 0 0 30px rgba(255, 183, 183, 0.42), 0 0 12px rgba(255, 53, 53, 0.58), 0 0 22px rgba(255, 53, 53, 0.84), 0 0 38px rgba(255, 532, 53, 0.88), 0 0 60px #ff3535;
+  }
+}
+
     </style>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
@@ -110,7 +165,7 @@
 <body>
     <div id="wrap">
         <div class="logo">
-            <h1>LOTTO</h1>
+                <span class="logo__word">LOTTO</span>
         </div>
         <div class="sectionLeft">
             <div class="numberSelectSection">
@@ -124,7 +179,7 @@
             <div class="prizeNumView"></div>
         </div>
         <div class="sectionRight">
-            <div class="hitResult">적중번호</div>
+            <div class="hitResult">적중한 번호</div>
             <div class="hitResultView"></div>
             <div class="prize">결과</div>
             <div class="prizeView"></div>
