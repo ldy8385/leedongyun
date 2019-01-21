@@ -1,0 +1,235 @@
+<html>
+
+<head>
+    <title>LOTTO</title>
+    <style>
+        p{
+            margin: 0;
+            font-size:12px;
+            text-align: center;
+        }
+        .logo{
+            border: 1px solid;
+            padding: 0px;
+            width: 438px;
+        }
+        .logo h1{
+            font-style: italic;
+            font-size: 46px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            margin: 0px;
+        }
+        .sectionLeft{
+            float: left;
+        }
+        table, th, td{
+            border: 1px solid;
+        }
+        tr, td{
+            width: 20px;
+            text-align: center;
+        }
+        #submitBtn{
+            width:238px;
+        }
+        .submitNumView{
+            width: 236px;
+            height: 30px;
+            border: 1px solid;
+        }
+        .prizeNumView{
+            width: 236px;
+            height: 80px;
+            border: 1px solid;
+        }
+        .prizeNumView p{
+            float: left;
+            border: 1px solid;
+            border-radius: 50%;
+            margin: 6px;
+            padding: 5px;
+            width: 15px;
+            height: 15px;
+        }
+        .sectionRight{
+            border: 1px solid;
+            height: 380px;
+            width: 200px;
+            display: inline-block;
+        }
+        .hitResultView{
+            border: 1px solid;
+            height: 40px;
+        }
+        .hitResultView p{
+            float: left;
+            border: 1px solid;
+            border-radius: 50%;
+            margin: 3px;
+            padding: 5px;
+            width: 15px;
+            height: 15px;
+        }
+        .prizeView{
+            border: 1px solid;
+            height: 337px;
+        }
+        .prizeView p{
+            margin: 0px;
+            text-align: center;
+            font-size:70px;
+            position: relative;
+            transform: translateY(100%);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="logo">
+            <h1>LOTTO</h1>
+        </div>
+        <div class="sectionLeft">
+            <div class="numberSelectSection">
+                <table>
+
+                </table>
+            </div>
+            <button id="submitBtn" onClick="submit()">제출 / 초기화</button>
+            <div class="submitNumView">
+                <p class="submitNumText"></p>
+            </div>
+            <div class="prizeNumView"></div>
+        </div>
+        <div class="sectionRight">
+            <div class="hitResultView"></div>
+            <div class="prizeView"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var submitNumArray = [];
+        var myLotto = [];
+
+        function creatForm() {
+            var num = 1;
+            for (var l = 1; l < 6; l++) {
+                $('table').append('<tr>');
+                for (var m = 1; m < 10; m++) {
+                    $('table').append('<td><input type="checkbox" name="chkNum" value="' + num + '">' + num + '</td>');
+                    num++;
+                }
+                $('table').append('</tr>');
+            }
+        }
+        creatForm();
+
+        function numberSubmit() {
+            $("input[name=chkNum]:checked").each(function () {
+                submitNumArray.push(Number($(this).val()));
+            });
+            console.log("뽑은 수 : " + submitNumArray);
+            $(".submitNumText").html("<p>뽑은 수 : " + submitNumArray + "</p>");
+
+            if (submitNumArray.length !== 6) {
+                window.alert("6개의 숫자를 선택해주세요.")
+                submitNumArray = [];
+                $(".submitNumText").html("");
+            }
+        }
+
+
+
+        function createLottoNum() {
+            if (submitNumArray.length == 6) {
+                var aryLotto = [];
+                var idx = 0;
+
+                for (var i = 1; i < 46; ++i) aryLotto.push(i)
+
+                while (myLotto.length < 6) {
+                    idx = Math.floor(Math.random() * aryLotto.length);
+                    myLotto.push(aryLotto[idx]);
+                    aryLotto.splice(idx, 1);
+                }
+
+                myLotto.sort(sortNumber);
+
+                function sortNumber(a, b) {
+                    return a - b;
+                }
+                console.log("생성된 로또 번호 : " + myLotto);
+                for (j = 0; j < 6; j++) {
+                    $(".prizeNumView").append("<p>" + myLotto[j] + "</p>");
+                }
+            }
+        }
+
+
+
+
+        function compareNum() {
+            if (submitNumArray.length == 6) {
+                var submitNumValue = [];
+                for (k = 0; k < 6; k++) {
+                    submitNumValue = myLotto.indexOf(submitNumArray[k]);
+                    if (submitNumValue != -1) {
+                        console.log("적중한 수 : " + myLotto[submitNumValue]);
+                        $(".hitResultView").append("<p>" + myLotto[submitNumValue] + "</p>");
+                    }
+                }
+                switch ($(".hitResultView p").length) {
+                    case 6:
+                        $(".prizeView").html("<p>1등</p>");
+                        break;
+                    case 5:
+                        $(".prizeView").html("<p>2등</p>");
+
+                        break;
+                    case 4:
+                        $(".prizeView").html("<p>3등</p>");
+
+                        break;
+                    case 3:
+                        $(".prizeView").html("<p>4등</p>");
+
+                        break;
+                    case 2:
+                        $(".prizeView").html("<p>5등</p>");
+
+                        break;
+                    case 1:
+                        $(".prizeView").html("<p>꽝</p>");
+
+                        break;
+                    case 0:
+                        $(".prizeView").html("<p>꽝</p>");
+
+                        break;
+                }
+            }
+        }
+
+        function cleanResultView() {
+            $(".hitResultView p").remove();
+        }
+
+        function cleanAll() {
+            window.location.reload();
+        }
+
+        function submit() {
+            if ($(".submitNumText").html() == "") {
+                cleanResultView();
+                numberSubmit();
+                createLottoNum();
+                compareNum();
+            } else {
+                cleanAll();
+            }
+        }
+    </script>
+</body>
+
+</html>
