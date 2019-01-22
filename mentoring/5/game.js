@@ -17815,6 +17815,17 @@ function showAdditionalButtons(a, c, d, e) {
     a.moveTo(a.x, getStageHeightCenter() + e, fps / 2, Easing.back.easeOut)
 }
 
+var scores = [];
+function showScore(){
+    var currentScore = countIteration;
+    scores.push(currentScore);
+    var maxScore = Math.max.apply(null, scores);
+    Utils.setCookie("score", scores);
+    console.log('현재 점수 : ' + currentScore);
+    console.log('최고 점수 : ' + maxScore);
+    console.log('점수표 : ' + scores);
+}
+
 var x = "";
 Utils.setCookie("game_count", x);
 
@@ -17832,7 +17843,7 @@ function showAd() {
             // var adData = {ad:2};
             // sdk.showAD(showADcallback, adData);
             
-            // var scoreData = {app_id:sdk.gameId, token:sdk.token, stage:"", score:ig.game.lastGameDistance, totalScore:ig.game.lastGameDistance};
+            // var scoreData = {app_id:sdk.gameId, token:sdk.token, stage:"", score:ig.game.currentScore, totalScore:ig.game.lastGameDistance};
             // sdk.showScore(scoreData);
             alert("광고");
             x = 1;
@@ -17844,6 +17855,7 @@ function showAd() {
 function showYouWin() {   
 
     showAd();
+    showScore()
 
     console.log("============showYouWin()");
     win_flag = !1;
@@ -17854,6 +17866,7 @@ function showYouWin() {
     a.fillColor = "#001a17";
     a.opacity = .7;
     a.static = !1;
+
     a.onclick = function() {
         return !1
     };
