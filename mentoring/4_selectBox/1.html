@@ -4,6 +4,9 @@
     <title>LeeDongYun</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <style>
+        #wrap{
+            display: inline-block;
+        }
         .txt{
             width:50px;
             height: 30px;
@@ -24,6 +27,7 @@
             background-color: black;
             margin-top: 20px;
             overflow-y: scroll;
+            color: #fff;
         }
         .logView p{
             color: white;
@@ -34,42 +38,33 @@
 
 <body>
     <div id="wrap">
-        <div class="section">
-            <input type="text" class="txt" id="txt0">
-            <button class="btn" id="btn0" value="0" onclick="add(0)">입력</button>
-            <input type="text" class="txt" id="txt1">
-            <button class="btn" id="btn1" value="1" onclick="add(1)">입력</button>
+        <fieldset>
+            <legend>구구단</legend>
+            <div class="section">
+                <input type="text" class="txt" id="txt0">
+                <button class="btn" id="btn0" value="0" onclick="add(0)">입력</button>
+                <input type="text" class="txt" id="txt1">
+                <button class="btn" id="btn1" value="1" onclick="add(1)">입력</button>
+            </div>
+            <div class="select">
+                <select class="slt" id="slt0"></select>
+                <button class="btn" id="mulBtn" onclick="mul()">X</button>
+                <select class="slt" id="slt1"></select>
+                <button class="btn" id="clrBtn" onclick="clrLog()">CLR</button>
+            </div>
+            <div class="logView">log<hr></div>
+        </fieldset>
         </div>
-        <div class="select">
-            <select class="slt" id="slt0">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-            </select>
-            <button class="btn" id="mulBtn" onclick="mul()">X</button>
-            <select class="slt" id="slt1">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-            </select>
-        </div>
-        <div class="logView"></div>
-    </div>
-</body>
-<script type="text/javascript">
+    </body>
+    <script type="text/javascript">
 var inputValue = "";
+
+    $(document).ready(function(){
+        for(var i = 1; i < 10; i++){
+        $('.slt').append(' <option value="' + i + '">' + i + '</option>');
+        }
+    });
+
     function insert(tag) {
         var currentInputValue = parseInt($('#txt' + tag).val());
         if (!isNaN(currentInputValue)) {
@@ -133,6 +128,10 @@ var inputValue = "";
 
         $('.logView').append('<p>' + numValue1 + ' X ' + numValue2 + ' = ' + mulResult + '</p>');
         $('.logView').scrollTop($('.logView').prop('scrollHeight'));
+    }
+
+    function clrLog(){
+        $('.logView p').remove();
     }
 </script>
 

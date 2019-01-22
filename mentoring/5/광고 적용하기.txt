@@ -1,0 +1,6 @@
+var showADcallback = function(data) {};
+var adData = {ad:2};
+sdk.showAD(showADcallback, adData);
+
+var scoreData = {app_id:sdk.gameId, token:sdk.token, stage:"", score:ig.game.lastGameDistance, totalScore:ig.game.lastGameDistance};
+sdk.showScore(scoreData);

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>脑袋去哪？7724小游戏</title>
+    <meta name="viewport" content="minimal-ui, target-densitydpi=device-dpi, user-scalable=0, width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icon.png">
+    <meta name="MobileOptimized" content="960">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	
+    <script type="text/javascript">
+			var sLangType = navigator.language || navigator.userLanguage;
+			var languageType = sLangType;
+			
+			function addJavascript(jsname) {
+				var th = document.getElementsByTagName('head')[0];
+				var s = document.createElement('script');
+
+				s.setAttribute('type','text/javascript');
+				s.setAttribute('src',jsname);
+				th.appendChild(s);
+			}
+            addJavascript('game.js');
+            document.title = 'Haunted Halloween';            			
+			/*
+			switch(languageType)
+			{
+				case "ko" :
+				case "ko-KR" :
+					addJavascript('game_KR.js');
+					document.title = '하운티드 할로윈';
+				break;
+				default :
+					addJavascript('game.js');
+					document.title = 'Haunted Halloween';
+				break;
+			}
+            */
+    </script>		
+    <!-- <script type="text/javascript" src="game.js"></script> -->
+</head>
+
+<body>
+    <div id="main_container"></div>
+    <link rel="stylesheet" href="skins/brown/css/components.css" />
+    <link rel="stylesheet" href="skins/brown/css/main.css" />
+    <link rel="stylesheet" href="skins/brown/css/responsive.css" />
+    <script type="text/javascript" src="skins/brown/js/components.js"></script>
+    <script type="text/javascript">
+        if (window.ExternalAPI) window.ExternalAPI.getPreloaderURL = function() {
+            return "http://h5.123games.co.kr";
+        };
+    </script>
+    <script type="text/javascript">
+        if (window.ExternalAPI) window.ExternalAPI.getMoreGamesURL = function() {
+            return "http://h5.123games.co.kr";
+        };
+    </script>
+
+    <script src="./Common/7724loading.js" language="JavaScript"></script>
+    <div style="display:none">
+        <script src="./Common/cnzz.js" language="JavaScript"></script>
+    </div>
+</body>
+
+</html>
