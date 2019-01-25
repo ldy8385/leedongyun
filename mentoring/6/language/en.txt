@@ -1,0 +1,25 @@
+ready;Get Ready
+go;GO
+upgrades;Upgrades
+choose;Choose the skills
+clear;Clear Data
+more;More Games
+no;No
+ok;OK
+play;ĞÄÃĠ
+sure1;Are you sure?
+sure2;This will remove\n your progress!
+yes;Yes
+complete;Battle       \n       Completed
+power;Power
+win;You Win!
+attack1;Attack the enemy by\n colecting combos!
+attack2;To do so, click on same-\ncolored wizards standing\n near each other
+cannon1;Click on the cannon to\n damage on one line!
+cannon2;Accumulate its power to\n fire stronger by\n making combinations!
+money;Use your gold\n to upgrade skills!
+power1;Each combo will increase\n the damage to the enemy!\n But don`t take too long\n to make a combo or you`ll\n lose your power!
+skill1;You have four skills!
+skill2;Every skill is increased after a\n right colour combination played!\n Click on the icon and indicate\n an action field!
+highscores;High scores
+walkthrough;Walkthrough
