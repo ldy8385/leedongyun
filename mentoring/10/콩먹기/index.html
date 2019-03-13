@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html manifest="offline.appcache">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>빙글빙글 콩먹기</title>
+<link rel="manifest" href="app.manifest" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" sizes="256x256" href="icon-256.png" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="shortcut icon" sizes="256x256" href="icon-256.png" />
+<meta http-equiv="Expires" content="-1"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="No-Cache">
+<script type="text/javascript" src="http://h5.123games.co.kr/Content/google_analytics.js"></script>
+<script type="text/javascript" src="http://h5test.hangame.com/Scripts/h5han.game-1.0.1.js"></script>
+<script type="text/javascript" src="http://static.123games.co.kr/h5/js/global.js"></script>
+<script type="text/javascript" src="http://static.123games.co.kr/h5/intro/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="http://static.123games.co.kr/h5/intro/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="http://static.123games.co.kr/h5/js/intro.js"></script>
+<link rel="stylesheet" type="text/css" href="http://static.123games.co.kr/h5/css/intro.css">
+<script type="text/javascript">
+	document.domain = setGlobalBase();
+	var app_id = 'G003';
+	var sdk = window.OTT_SDK;
+	var shareCallback = function (data) { console.log(data); };
+	var payCallback = function (data) { console.log(data); };
+	sdk.config(app_id, shareCallback, payCallback);
+</script>
+<style type="text/css">
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	html, body {
+		background: #000;
+		color: #fff;
+		overflow: hidden;
+		touch-action: none;
+		-ms-touch-action: none;
+	}
+	canvas {
+		touch-action-delay: none;
+		touch-action: none;
+		-ms-touch-action: none;
+	}
+</style>
+</head>
+<body>
+<div id="fb-root"></div>
+<div id="c2canvasdiv">
+<canvas id="c2canvas" width="400" height="622">
+</canvas>
+</div>
+<script src="jquery-2.0.0.min.js"></script>
+<script src="./c2runtime.js?v=190226"></script>
+<div id="intro_wrap"></div>
+<script>
+		// Size the canvas to fill the browser viewport.
+		jQuery(window).resize(function() {
+			cr_sizeCanvas(jQuery(window).width(), jQuery(window).height());
+		});
+		
+		// Start the Construct 2 project running on window load.
+		jQuery(document).ready(function ()
+		{			
+			// Create new runtime using the c2canvas
+			cr_createRuntime("c2canvas");
+		});
+		
+		// Pause and resume on page becoming visible/invisible
+		function onVisibilityChanged() {
+			if (document.hidden || document.mozHidden || document.webkitHidden || document.msHidden)
+				cr_setSuspended(true);
+			else
+				cr_setSuspended(false);
+		};
+		
+		document.addEventListener("visibilitychange", onVisibilityChanged, false);
+		document.addEventListener("mozvisibilitychange", onVisibilityChanged, false);
+		document.addEventListener("webkitvisibilitychange", onVisibilityChanged, false);
+		document.addEventListener("msvisibilitychange", onVisibilityChanged, false);
+		
+    </script>
+<div style="display:none">
+</div>
+</body>
+</html>

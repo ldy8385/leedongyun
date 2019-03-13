@@ -350,7 +350,14 @@ function fxPreBattle(e, t) {
     })
 }
 
+function boomFx(){
+    
+}
+
 function createBattle() {
+    console.log("bbb");
+    var g = library.getSprite("fonts/font6");
+    drawImage(g,100,100)
     showAd();
     playSound("game", MIXER_CHANNEL_MUSIC);
     var e = GameStage.create(GAME_MANIFEST.fps);
@@ -750,11 +757,12 @@ GAME_CONFIG.castle.upgrade = {
         maxLevel: 30
     }
 }, GAME_CONFIG.enemy = {}, GAME_CONFIG.enemy.field = {}, GAME_CONFIG.enemy.field.width = GAME_CONFIG.castle.field.left - 60, GAME_CONFIG.enemy.field.height = GAME_CONFIG.castle.field.rows * GAME_CONFIG.castle.field.cell.height, GAME_CONFIG.enemy.field.x = 30, GAME_CONFIG.enemy.field.y = GAME_CONFIG.castle.field.top, GAME_CONFIG.enemy.field.skillArea = GAME_CONFIG.enemy.field.width - 65, GAME_CONFIG.enemy.speed = {
-    slow: 10,
-    medium: 20,
-    fast: 30
+    slow: 50,   //10
+    medium: 80, //20
+    fast: 110,    //30
+    boss: 20
 };
-var ENEMY_ATTACK_RATIO = .046875;
+var ENEMY_ATTACK_RATIO = .046875; //.046875
 GAME_CONFIG.enemy.types = [], GAME_CONFIG.enemy.types.push({
     type: "1",
     x: 0,
@@ -1067,34 +1075,34 @@ GAME_CONFIG.enemy.types = [], GAME_CONFIG.enemy.types.push({
         units: [10, 11, 12, 13, 14, 15, 16, 17, 17, 17, 17, 17, 17, 15, 15, 15, 15, 16, 16, 16, 17, 17, 17, 17, 16, 14, 13, 13, 13, 16, 17, 17, 17]
     }]
 }, GAME_CONFIG.enemy.wave = [
-    [1],
-    [2],
-    [2, 2, 3],
-    [2, 2, 2, 3],
-    [2, 2, 2, 3, 3],
-    [2, 2, 2, 2, 3, 3, 3],
-    [2, 2, 3, 3, 4],
-    [3, 3, 3, 4, 4, 5],
-    [4, 4, 4, 5, 5],
-    [5, 5, 6, 6],
-    [4, 4, 4, 5, 5, 5, 6, 6],
-    [6, 6, 7, 7, 7, 8, 8],
-    [8, 8, 8, 9, 9, 9],
-    [9, 9, 10, 10, 11, 12],
-    [12, 12, 12, 13, 13],
-    [13, 13, 13, 14, 14, 14, 14, 15],
-    [13, 13, 14, 14, 15, 15, 16, 16],
-    [13, 13, 14, 15, 16, 17, 18, 19],
-    [17, 17, 17, 18, 18, 18, 19, 19],
-    [19, 19, 19, 19, 20, 20, 20, 20]
+    [1, 1],
+    [1, 1, 2],
+    [2, 2, 2, 2, 3],
+    [2, 2, 2, 3, 3, 3],
+    [2, 2, 2, 2, 2, 3, 3, 3],
+    [2, 2, 2, 2, 3, 3, 3, 3, 3, 3],
+    [2, 2, 3, 3, 4,4,4],
+    [3, 3, 3, 4, 4, 5,5],
+    [4, 4, 4, 5, 5,5,5],
+    [5, 5, 6, 6,6,6],
+    [4, 4, 4, 5, 5, 5, 6, 6,6],
+    [6, 6, 7, 7, 7, 8, 8,8,8],
+    [8, 8, 8, 9, 9, 9,9,9],
+    [9, 9, 10, 10, 11, 12,12,12],
+    [12, 12, 12, 13, 13,13,13],
+    [13, 13, 13, 14, 14, 14, 14, 15,15,15],
+    [13, 13, 14, 14, 15, 15, 16, 16,16,16],
+    [13, 13, 14, 15, 16, 17, 18, 19,19,19],
+    [17, 17, 17, 18, 18, 18, 19, 19,19,19],
+    [19, 19, 19, 19, 20, 20, 20, 20,20,20]
 ], GAME_CONFIG.enemy.boss = {
     position: {
-        x: 210,
-        y: 100
+        x: 210, //210
+        y: 100  //100
     },
     timeout: 1e4,
     hp: 1e4,
-    damage: 10
+    damage: 10,
 };
 var ASSETS = {
         bitmaps: [{

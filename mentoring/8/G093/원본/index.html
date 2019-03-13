@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>立体宠物连连看-7724小游戏</title>
+<meta name="keywords" content="立体方块连连看,立体方块连连看html5游戏" />
+<meta name="description" content="立体方块连连看html5游戏,立体方块连连看手机在线游戏" />
+<meta name="date" content="2014-06-27">
+<meta name="gameCats" content="Mahjong">
+<meta property="og:type" content="game">
+<meta property="og:title" content="Cube Zoobies">
+<meta property="og:image" content="img/icon/image-300x200.jpg">
+<meta property="og:description" content="A 3D Mahjong game. Click on two of the same free cubes to remove them from the game. A cube is free if it has no cubes on top of it.">
+<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0,width=device-width">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="msapplication-tap-highlight" content="no">
+<link rel="shortcut icon" sizes="196x196" href="img/icon/icon-196x196.png">
+<link rel="apple-touch-icon" href="img/icon/icon-60x60.png">
+<link rel="apple-touch-icon" sizes="76x76" href="img/icon/icon-76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="img/icon/icon-120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="img/icon/icon-152x152.png">
+<link rel="stylesheet" type="text/css" href="css/game.min.css">
+<script src="js/zygomatic-game.js"></script>
+<script src="js/ThirdParty.js"></script>
+<script src="js/game.js"></script>
+</head>
+<body>
+<script src="../Common/7724loading.js" language="JavaScript"></script>
+<script src="../Common/7724common.js" language="JavaScript"></script>
+<div id="gameContainer"></div>
+<div id="adContainer"><div id="timeLeft"></div></div>
+<div id="rotateHint">
+<h2>Please rotate your device</h2>
+<img class="rotate" src="img/rotate.png" alt="Please rotate your device">
+<img id="rotateClose" src="img/close.png" alt="X">
+</div>
+<script>
+var gameName = document.title,
+gameContainer = document.getElementById('gameContainer'),
+gamePlay = new GamePlay();
+function orderInit(a)
+{
+switch(a) {
+case 1: loadRec.creatloading(); break;
+case 2: GameMenu.showMenu(); break;
+case 3: GameHelp.showHelp(); break;
+case 4: gamePlay.showPlay(); break;
+case 5: GameOver.showOver(); break;
+}
+}
+GameLib.init(gameName, 800, 480);
+</script>
+<div style="display:none">
+<script src="../Common/cnzz.js" language="JavaScript"></script>
+</div>
+</body>
+</html>

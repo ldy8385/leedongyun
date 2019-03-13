@@ -1,0 +1,102 @@
+﻿{
+
+"inventory":{"size":1, "0":"", "1":"", "2":"", "3":"", "4":""},
+
+"tuto":0,
+
+"tuto1_0":"How to play\n\n\n\n",
+"tuto1_1":"Combine 3 ingredients to create a new one.\nEx: [[[ > ]",
+"tuto1_2":"Very good. Now try to create (",
+"tuto1_3":"Be careful. If you cross the line, it is Game Over.",
+
+"tuto2_0":"Use ingredients you got earlier to buy the selected recipe.",
+"tuto2_1":"Now you can craft ë using ingredients from the recipe.",
+
+"tuto3_0":"Touch [ and ] then cook these ingredients.",
+"tuto3_1":"But in this tutorial, you can try again. Select [ and ]",
+"tuto3_2":"Congratulation!\nYou can move on to the next level.",
+
+"tuto4_0":"Select ë to equip it.",
+"tuto4_1":"Well done. Now you can use ë during the game.",
+
+"0":{"name":"Gold","recipe":"1004_0,12_0", "product":"13_0"},
+"1":{"name":"Silver","recipe":"1005_0,9_0", "product":"9_1"},
+"2":{"name":"Bronze","recipe":"1006_0,5_0", "product":"100_0"},
+
+"r0":{"name":"Happy Foot","recipe":"1,3_0,1,4_0", "product":"1,5_0", "price":"1,5_0", "discovered":0},
+"r1":{"name":"Warmed Hand","recipe":"1,1_0,1,2_0,1,5_0", "product":"1,6_0", "price":"2,6_0", "discovered":0},
+"r2":{"name":"Fashion Handbag","recipe":"1,1_0,1,5_0,2,6_0", "product":"1,7_0", "price":"3,7_0", "discovered":0},
+"r3":{"name":"Short Pants","recipe":"1,2_0,2,7_0,2,8_0", "product":"1,8_0", "price":"4,8_0", "discovered":0},
+"r4":{"name":"Green Shirt","recipe":"2,3_0,3,7_0,1,8_0", "product":"1,9_0", "price":"4,9_0,4,8_0", "discovered":0},
+"r5":{"name":"Old Jeans","recipe":"2,4_0,3,9_0", "product":"1,10_0", "price":"4,10_0", "discovered":0},
+"r6":{"name":"Fancy Hat","recipe":"2,5_0,2,6_0,2,10_0", "product":"1,11_0", "price":"3,11_0,5,7_0", "discovered":0},
+"r7":{"name":"Blue Dress","recipe":"2,4_0,2,10_0,2,11_0", "product":"1,12_0", "price":"5,12_0", "discovered":0},
+
+"r8":{"name":"Bronze Nugget","recipe":"1,1_0,1,2_0", "product":"1,1006_0", "price":"3,7_0", "discovered":0},
+"r9":{"name":"Silver Nugget","recipe":"1,1000_0,1,1001_0", "product":"1,1005_0", "price":"5,9_0", "discovered":0},
+"r10":{"name":"Gold Nugget","recipe":"3,11_1,1,1002_0,1,1003_0", "product":"1,1004_0", "price":"5,12_0", "discovered":0},
+
+"r11":{"name":"Line Breaker","recipe":"3,4_0,3,5_0,3,6_0", "product":"1,1000_0", "price":"10,6_0", "discovered":0},
+"r12":{"name":"Column Breaker","recipe":"3,5_0,3,6_0,3,7_0", "product":"1,1001_0", "price":"10,7_0", "discovered":0},
+"r13":{"name":"Pattern Breaker","recipe":"3,6_0,3,7_0,3,8_0", "product":"1,1002_0", "price":"10,8_0", "discovered":0},
+"r14":{"name":"Circle Breaker","recipe":"3,7_0,3,8_0,3,9_0", "product":"1,1003_0", "price":"10,9_0", "discovered":0},
+
+"r15":{"name":"Inventory Boost 1","recipe":"5,100_0", "product":"3 inventory slots", "price":"5,100_0", "discovered":0, "desc":"Inventory space has been increased to 3 items.", "callback":"increaseInv,3"},
+"r16":{"name":"Inventory Boost 2","recipe":"5,10_1", "product":"5 Inventory slots", "price":"5,10_1", "discovered":0, "desc":"Inventory space has been increased to 5 items.", "callback":"increaseInv,5"},
+"r17":{"name":"Reward Boost 1","recipe":"5,9_1", "product":"max reward x10", "price":"5,9_1", "discovered":0, "desc":"Ingredients reward max value has been increased to 10.", "callback":"increaseInv,5"},
+"r18":{"name":"reward boost 2","recipe":"10,12_0", "product":"max reward x10", "price":"10,12_0", "discovered":0, "desc":"Ingredients reward max value has been increased to 20.", "callback":"increaseInv,10"},
+
+"r19":{"name":"Wedding","recipe":"1,13_0,1,14_0", "product":"1,15_0", "price":"1,13_0,1,14_0", "discovered":0},
+"r20":{"name":"Divorce","recipe":"1,15_0", "product":"30,1_0,30,2_0,30,3_0,30,4_0", "price":"2,15_0", "discovered":0},
+
+"e1_0":{"name":"Thread","value":1, "terminal":0, "discovered":1, "inv":0, "short":"["},
+"e2_0":{"name":"Bobbin","value":2, "terminal":0, "discovered":1, "inv":0, "short":"]"},
+"e3_0":{"name":"Green Pattern","value":4, "terminal":0, "discovered":1, "inv":0, "short":"&"},
+"e4_0":{"name":"Cloth Roll","value":8, "terminal":0, "discovered":0, "inv":0, "short":"~"},
+"e5_0":{"name":"Sock","value":16, "terminal":0, "discovered":0, "inv":0, "short":"("},
+"e6_0":{"name":"Glove","value":32, "terminal":0, "discovered":0, "inv":0, "short":")"},
+"e7_0":{"name":"Handbag","value":64, "terminal":0, "discovered":0, "inv":0, "short":"#"},
+"e8_0":{"name":"Short","value":128, "terminal":0, "discovered":0, "inv":0, "short":"$"},
+"e9_0":{"name":"Shirt","value":256, "terminal":0, "discovered":0, "inv":0, "short":"<"},
+"e10_0":{"name":"Jeans","value":512, "terminal":0, "discovered":0, "inv":0, "short":"¤"},
+"e11_0":{"name":"Hat","value":1024, "terminal":0, "discovered":0, "inv":0, "short":"^"},
+"e12_0":{"name":"Blue Dress","value":2048, "terminal":1, "discovered":0, "inv":0, "short":"£"},
+
+"e13_0":{"name":"Gold Dress","value":4096, "terminal":0, "discovered":0, "inv":0, "short":"¨"},
+"e14_0":{"name":"Gold Vest","value":8192, "terminal":0, "discovered":0, "inv":0, "short":"µ"},
+"e15_0":{"name":"Wedding Robe","value":16384, "terminal":1, "discovered":0, "inv":0, "short":"°"},
+
+"e9_1":{"name":"Silver Shirt","value":256, "terminal":0, "discovered":0, "inv":0, "short":"§"},
+"e10_1":{"name":"Silver Jeans","value":512, "terminal":0, "discovered":0, "inv":0, "short":"é"},
+"e11_1":{"name":"Silver Hat","value":1024, "terminal":1, "discovered":0, "inv":0, "short":"è"},
+
+"e100_0":{"name":"Bronze Sock","value":32, "terminal":1, "discovered":0, "inv":0, "short":"à"},
+
+"e1000_0":{"name":"L.Scissors","value":0, "terminal":2, "discovered":0, "inv":0, "short":"@", "desc":"Destroy a line" },
+"e1001_0":{"name":"C.Scissors","value":0, "terminal":2, "discovered":0, "inv":0, "short":";", "desc":"Destroy a column" },
+"e1002_0":{"name":"Hand","value":0, "terminal":2, "discovered":0, "inv":0, "short":"|", "desc":"Destroy selected" },
+"e1003_0":{"name":"Match","value":0, "terminal":2, "discovered":0, "inv":0, "short":"_", "desc":"Burn around it" },
+"e1004_0":{"name":"Gold","value":0, "terminal":1, "discovered":0, "inv":0, "short":"€", "desc":"Combine with £" },
+"e1005_0":{"name":"Silver","value":0, "terminal":1, "discovered":0, "inv":0, "short":"ê", "desc":"Combine with <" },
+"e1006_0":{"name":"Bronze","value":0, "terminal":1, "discovered":0, "inv":0, "short":"ë", "desc":"Combine with (" },
+
+"l1":{"completed":0, "rules":"", "required":"", "t_points":0, "t_el":"5_0", "reward":"1,1_0,1,2_0,1,5_0", "t5_0":1},
+"l2":{"completed":0, "rules":"", "required":"", "t_points":0, "t_el":"7_0", "reward":"3,7_0", "t7_0":1},
+"l3":{"completed":0, "rules":"", "required":"", "t_points":300, "t_el":"", "reward":"5,6_0,5,7_0", "t7_0":1},
+"l4":{"completed":0, "rules":"", "required":"r8", "t_points":0, "t_el":"100_0", "reward":"1,100_0", "t7_0":1},
+"l5":{"completed":0, "rules":"", "required":"", "t_points":0, "t_el":"9_0", "reward":"3,9_0", "t9_0":1},
+"l6":{"completed":0, "rules":"", "required":"", "t_points":0, "t_el":"10_0", "reward":"2,10_0", "t10_0":1},
+"l7":{"completed":0, "rules":"", "required":"", "t_points":0, "t_el":"11_0", "reward":"3,11_0", "t11_0":1},
+"l8":{"completed":0, "rules":"", "required":"", "t_points":5000, "t_el":"", "reward":"5,11_0", "t11_0":1},
+"l9":{"completed":0, "rules":"", "required":"r9", "t_points":0, "t_el":"9_1", "reward":"3,9_1", "t11_0":1},
+"l10":{"completed":0, "rules":"", "required":"r9", "t_points":0, "t_el":"11_1", "reward":"2,10_1,2,11_1", "t11_0":1},
+"l11":{"completed":0, "rules":"", "required":"", "t_points":0, "t_el":"12_0", "reward":"1,12_0", "t12_0":1},
+"l12":{"completed":0, "rules":"", "required":"", "t_points":20000, "t_el":"", "reward":"3,12_0", "t12_0":1},
+"l13":{"completed":0, "rules":"", "required":"r10", "t_points":0, "t_el":"13_0", "reward":"1,13_0", "t13_0":1},
+"l14":{"completed":0, "rules":"", "required":"r10", "t_points":0, "t_el":"14_0", "reward":"1,14_0", "t14_0":1},
+"l15":{"completed":0, "rules":"", "required":"r10", "t_points":0, "t_el":"15_0", "reward":"1,15_0", "t15_0":1},
+"l16":{"completed":0, "rules":"", "required":"r10", "t_points":0, "t_el":"", "reward":"", "t15_0":1},
+
+"stats":{"rewards_base":3, "rewards_rand":3}
+
+}

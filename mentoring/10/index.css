@@ -1,0 +1,10 @@
+#intro_wrap {position:absolute; top:0px; left:50%; margin-left:-50%; width:100%; height:100%; background:#fff; text-align:center;}
+#intro_wrap img {width:50%; max-width:393px; height:auto; margin-top:70%; display:none;}
+@media screen and (min-width:700px) {
+	#intro_wrap img.simple5_bi {margin-top:52%;}
+	#intro_wrap img.universe_bi {margin-top:45%;}
+}
+@media screen and (min-width:1200px) {
+	#intro_wrap img.simple5_bi {margin-top:22%;}
+	#intro_wrap img.universe_bi {margin-top:15%;}
+}
